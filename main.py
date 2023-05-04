@@ -35,6 +35,10 @@ class Application(tk.Tk):
         self.clear_button = tk.Button(self.left_frame, text="Clear", command=self.clear)
         self.clear_button.pack()
 
+        # Clear History button
+        self.clear_history_button = tk.Button(self.left_frame, text="Clear History", command=self.clear_history)
+        self.clear_history_button.pack()
+
         # Right side
         self.right_frame = tk.Frame(self)
         self.right_frame.grid(row=0, column=1, sticky="n")
@@ -91,6 +95,11 @@ class Application(tk.Tk):
             text.delete(1.0, tk.END)
         self.conclusion_text.delete(1.0, tk.END)
         self.brainstorming = Brainstorming()
+
+    def clear_history(self):
+        for text in self.history_texts:
+            text.delete(1.0, tk.END)
+        self.conclusion_text.delete(1.0, tk.END)
 
 
 if __name__ == "__main__":
